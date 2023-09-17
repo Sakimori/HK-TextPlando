@@ -8,8 +8,10 @@ using ItemChanger.Extensions;
 using ItemChanger.Modules;
 using ItemChanger.Placements;
 using ItemChanger.Tags;
+using TextChanger;
 using System;
 using System.Collections.Generic;
+using Modding;
 
 namespace Archipelago.HollowKnight
 {

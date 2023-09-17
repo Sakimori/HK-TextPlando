@@ -67,6 +67,9 @@
     <Reference Include="MenuChanger">
       <HintPath>$(HollowKnightRefs)/Mods/MenuChanger/MenuChanger.dll</HintPath>
     </Reference>
+    <Reference Include="TextChanger">
+      <HintPath>$(HollowKnightRefs)/Mods/TextChanger/TextChanger.dll</HintPath>
+    </Reference>
     <Reference Include="MMHOOK_Assembly-CSharp">
       <HintPath>$(HollowKnightRefs)/MMHOOK_Assembly-CSharp.dll</HintPath>
     </Reference>

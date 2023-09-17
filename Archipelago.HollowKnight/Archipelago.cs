@@ -311,6 +311,13 @@ namespace Archipelago.HollowKnight
                     }
                 }
 
+                List<List<string>> textPlando = SlotDataExtract.ExtractArrayFromSlotData<List<List<string>>>(loginResult.SlotData["plando_texts"]);
+                foreach (List<string> locationTextPair in textPlando)
+                {
+                    string[] keySheetPair = locationTextPair[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                    TextChanger.TextChanger.LoadedInstance.addOverride(keySheetPair[0], keySheetPair[1], locationTextPair[1]);
+                }
+
                 pendingGeo = 0;
             }
 
