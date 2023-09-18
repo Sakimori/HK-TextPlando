@@ -310,20 +310,21 @@ namespace Archipelago.HollowKnight
                             "Slot mismatch.  Saved seed does not match the server value.  Is this the correct save?");
                     }
                 }
-                try
-                {
-                    List<List<string>> textPlando = SlotDataExtract.ExtractArrayFromSlotData<List<List<string>>>(loginResult.SlotData["plando_texts"]);
-                    foreach (List<string> locationTextPair in textPlando)
-                    {
-                        string[] keySheetPair = locationTextPair[0].Split(new string[] { ", " }, StringSplitOptions.None);
-                        TextChanger.TextChanger.LoadedInstance.addOverride(keySheetPair[0], keySheetPair[1], locationTextPair[1]);
-                    }
-                }
-                catch { 
-                    //plando_texts not present in game
-                }
-
                 pendingGeo = 0;
+            }
+
+            // Load any existing text plando data saved to slot on either new game or loaded save.
+            try
+            {
+                List<List<string>> textPlando = SlotDataExtract.ExtractArrayFromSlotData<List<List<string>>>(loginResult.SlotData["plando_texts"]);
+                foreach (List<string> keySheetText in textPlando)
+                {
+                    TextChanger.TextChanger.LoadedInstance.addOverride(keySheetText[0], keySheetText[1], keySheetText[2]);
+                }
+            }
+            catch
+            {
+                //plando_texts not present in game
             }
 
             // Hooks happen after we've definitively connected to an Archipelago slot correctly.
