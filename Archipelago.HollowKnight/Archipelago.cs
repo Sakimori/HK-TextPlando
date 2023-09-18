@@ -310,12 +310,17 @@ namespace Archipelago.HollowKnight
                             "Slot mismatch.  Saved seed does not match the server value.  Is this the correct save?");
                     }
                 }
-
-                List<List<string>> textPlando = SlotDataExtract.ExtractArrayFromSlotData<List<List<string>>>(loginResult.SlotData["plando_texts"]);
-                foreach (List<string> locationTextPair in textPlando)
+                try
                 {
-                    string[] keySheetPair = locationTextPair[0].Split(new string[] { ", " }, StringSplitOptions.None);
-                    TextChanger.TextChanger.LoadedInstance.addOverride(keySheetPair[0], keySheetPair[1], locationTextPair[1]);
+                    List<List<string>> textPlando = SlotDataExtract.ExtractArrayFromSlotData<List<List<string>>>(loginResult.SlotData["plando_texts"]);
+                    foreach (List<string> locationTextPair in textPlando)
+                    {
+                        string[] keySheetPair = locationTextPair[0].Split(new string[] { ", " }, StringSplitOptions.None);
+                        TextChanger.TextChanger.LoadedInstance.addOverride(keySheetPair[0], keySheetPair[1], locationTextPair[1]);
+                    }
+                }
+                catch { 
+                    //plando_texts not present in game
                 }
 
                 pendingGeo = 0;
